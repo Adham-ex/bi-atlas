@@ -189,6 +189,12 @@ export const dictionary = {
     glossary: { ar: "المصطلحات", en: "Glossary" },
     questions: { ar: "أسئلة العمل", en: "Business questions" },
     kpis: { ar: "كتالوج المؤشرات", en: "KPI catalogue" },
+    topKpis: { ar: "أهم 6 مؤشرات", en: "Top 6 KPIs" },
+    topKpisBody: {
+      ar: "مجموعة بداية عملية لهذا المجال، مرتبة حسب الأولوية. التعريفات تختلف بين المؤسسات، فاعتمد التعريف المتفق عليه قبل بناء تقرير إنتاجي.",
+      en: "A practical starting set for this domain, in priority order. Definitions vary between organizations, so confirm the agreed definition before building a production report.",
+    },
+    moreKpis: { ar: "مؤشرات أخرى في هذا المجال", en: "More KPIs in this domain" },
     dashboards: { ar: "صفحات مقترحة", en: "Suggested dashboard pages" },
     patterns: { ar: "أنماط العرض", en: "Visual patterns" },
     scenarios: { ar: "سيناريوهات عملية", en: "Practical scenarios" },

@@ -107,6 +107,8 @@ export interface Domain {
   glossary: GlossaryEntry[];
   questions: Bi[];
   dashboardPages: DashboardPage[];
+  /** The domain's six headline KPI ids, in priority order. */
+  topKpis: string[];
   /** Visualization pattern ids recommended for this domain. */
   patterns: string[];
   scenarios: Scenario[];

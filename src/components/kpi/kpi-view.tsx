@@ -36,7 +36,7 @@ import {
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/motion";
 
 export function KpiView({ kpi }: { kpi: Kpi }) {
-  const { d, tr } = useSettings();
+  const { d, tr, locale } = useSettings();
   const ws = useWorkspace();
 
   useRecordVisit({
@@ -60,7 +60,7 @@ export function KpiView({ kpi }: { kpi: Kpi }) {
           { label: { ar: kpi.nameAr, en: kpi.name } },
         ]}
         title={tr({ ar: kpi.nameAr, en: kpi.name })}
-        subtitle={`${kpi.name}${kpi.acronym ? ` · ${kpi.acronym}` : ""}`}
+        subtitle={`${locale === "en" ? kpi.nameAr : kpi.name}${kpi.acronym ? ` · ${kpi.acronym}` : ""}`}
         description={kpi.definition}
         meta={
           <>

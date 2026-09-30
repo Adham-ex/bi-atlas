@@ -199,6 +199,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["otif", "inventory-turnover", "stockout-rate", "supplier-on-time-delivery", "order-cycle-time", "freight-cost-per-unit"],
     patterns: ["inventory-aging-matrix", "kpi-card", "variance-bar", "actual-vs-target", "exception-table"],
     scenarios: [
       {
@@ -399,6 +400,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["revenue-growth-rate", "gross-profit-margin", "opex-variance", "current-ratio", "dso", "operating-cash-flow"],
     patterns: ["waterfall-variance", "pl-matrix", "kpi-card", "actual-vs-target", "period-over-period"],
     scenarios: [
       {
@@ -557,6 +559,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["cac", "roas", "ctr", "conversion-rate", "cpl", "marketing-roi"],
     patterns: ["funnel", "kpi-card-multi", "scatter-quadrant", "period-over-period", "actual-vs-target"],
     scenarios: [
       {
@@ -714,6 +717,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["bed-occupancy-rate", "average-length-of-stay", "readmission-rate-30d", "ed-waiting-time", "hai-rate", "claim-denial-rate"],
     patterns: ["kpi-card", "heatmap-calendar", "pl-matrix", "exception-table", "period-over-period"],
     scenarios: [
       {
@@ -870,6 +874,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["food-cost-pct", "beverage-cost-pct", "food-waste-pct", "aov", "sales-per-labor-hour", "table-turnover-rate"],
     patterns: ["scatter-quadrant", "heatmap-calendar", "kpi-card-multi", "exception-table"],
     scenarios: [
       {
@@ -1027,6 +1032,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["spi", "cpi", "schedule-variance", "cost-variance", "milestone-on-time-rate", "eac"],
     patterns: ["actual-vs-target", "kpi-card-multi", "waterfall-variance", "exception-table", "backlog-analysis"],
     scenarios: [
       {
@@ -1184,6 +1190,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["employee-turnover-rate", "time-to-hire", "time-to-fill", "absenteeism-rate", "cost-per-hire", "training-completion-rate"],
     patterns: ["kpi-card", "stacked-bar", "period-over-period", "pl-matrix", "exception-table"],
     scenarios: [
       {
@@ -1342,6 +1349,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["net-sales", "conversion-rate", "aov", "sell-through-rate", "inventory-turnover", "repeat-purchase-rate"],
     patterns: ["kpi-card-multi", "period-over-period", "waterfall-variance", "pl-matrix", "funnel"],
     scenarios: [
       {
@@ -1507,6 +1515,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["oee", "first-pass-yield", "scrap-rate", "schedule-attainment", "production-cycle-time", "manufacturing-cost-per-unit"],
     patterns: ["kpi-card-multi", "decomposition-tree", "waterfall-variance", "exception-table", "actual-vs-target"],
     scenarios: [
       {
@@ -1665,6 +1674,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["first-response-time", "first-contact-resolution", "csat", "nps", "avg-resolution-time", "sla-achievement-rate"],
     patterns: ["kpi-card-multi", "heatmap-calendar", "decomposition-tree", "backlog-analysis", "exception-table"],
     scenarios: [
       {
@@ -1822,6 +1832,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["npl-ratio", "delinquency-rate", "cost-to-income-ratio", "nim", "loan-to-deposit-ratio", "cac"],
     patterns: ["kpi-card", "inventory-aging-matrix", "waterfall-variance", "pl-matrix", "period-over-period"],
     scenarios: [
       {
@@ -1980,6 +1991,7 @@ export const domains: Domain[] = [
         },
       },
     ],
+    topKpis: ["mrr", "arr", "churn-rate", "nrr", "availability", "mttr"],
     patterns: ["waterfall-variance", "kpi-card-multi", "pl-matrix", "period-over-period", "backlog-analysis"],
     scenarios: [
       {

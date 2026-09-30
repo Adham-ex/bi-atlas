@@ -78,8 +78,8 @@ export function KpiSpotlight() {
   );
 }
 
-export function KpiPreviewCard({ kpi }: { kpi: Kpi }) {
-  const { d, tr } = useSettings();
+export function KpiPreviewCard({ kpi, rank }: { kpi: Kpi; rank?: number }) {
+  const { d, tr, locale } = useSettings();
   return (
     <Lift>
       <Link
@@ -87,10 +87,19 @@ export function KpiPreviewCard({ kpi }: { kpi: Kpi }) {
         className="flex h-full flex-col rounded-lg border border-border bg-surface p-5 shadow-[var(--shadow-card)] outline-none transition-colors hover:border-border-strong focus-visible:ring-2 focus-visible:ring-primary"
       >
         <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
+          {rank !== undefined ? (
+            <span
+              className="flex size-7 shrink-0 items-center justify-center rounded-md border border-primary/40 bg-primary/12 font-mono text-xs font-semibold text-primary-soft"
+              aria-label={`#${rank}`}
+            >
+              {rank}
+            </span>
+          ) : null}
+          <div className="min-w-0 flex-1">
             <h3 className="truncate text-[15px] font-semibold">{tr({ ar: kpi.nameAr, en: kpi.name })}</h3>
-            <p className="mt-0.5 truncate text-xs text-faint" dir="ltr">
-              {kpi.name}
+            {/* The other language's name underneath, as the domain cards do. */}
+            <p className="mt-0.5 truncate text-xs text-faint" dir={locale === "en" ? "rtl" : "ltr"}>
+              {locale === "en" ? kpi.nameAr : kpi.name}
               {kpi.acronym ? ` · ${kpi.acronym}` : ""}
             </p>
           </div>

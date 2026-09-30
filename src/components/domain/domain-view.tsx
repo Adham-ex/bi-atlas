@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Clock, Database, HelpCircle, LayoutDashboard, Target, Users } from "lucide-react";
 import type { Domain } from "@/content/types";
-import { kpisForDomain } from "@/content/kpis";
+import { kpisForDomainRanked } from "@/content/kpis";
 import { resolvePatterns } from "@/content/patterns";
 import { challengesForDomain } from "@/content/challenges";
 import { domainById } from "@/content/domains";
@@ -32,7 +32,8 @@ export function DomainView({ domain }: { domain: Domain }) {
 
   useRecordVisit({ kind: "domain", slug: domain.slug, label: domain.name });
 
-  const kpis = kpisForDomain(domain.id);
+  const { top: topKpis, more: moreKpis } = kpisForDomainRanked(domain);
+  const kpiTotal = topKpis.length + moreKpis.length;
   const patterns = resolvePatterns(domain.patterns);
   const challenges = challengesForDomain(domain.id);
   const related = domain.relatedDomains
@@ -66,7 +67,7 @@ export function DomainView({ domain }: { domain: Domain }) {
                 </Badge>
                 <Badge tone="primary">
                   <Target className="size-3" aria-hidden />
-                  {kpis.length} {tr(d.labels.kpiCount)}
+                  {kpiTotal} {tr(d.labels.kpiCount)}
                 </Badge>
                 {domain.tags.map((t) => (
                   <Badge key={t.en}>{tr(t)}</Badge>
@@ -187,24 +188,40 @@ export function DomainView({ domain }: { domain: Domain }) {
           </div>
         </div>
 
-        {/* KPI catalogue */}
+        {/* Top 6 KPIs, in the domain's priority order */}
         <div className="mt-14">
           <SectionHeading
-            title={d.domain.kpis}
+            id="top-kpis"
+            title={d.domain.topKpis}
+            body={d.domain.topKpisBody}
             action={<ArrowLink href="/kpis">{tr(d.actions.viewAll)}</ArrowLink>}
           />
-          {kpis.length === 0 ? (
+          {topKpis.length === 0 ? (
             <Card className="text-sm text-muted">{tr(d.workspace.empty)}</Card>
           ) : (
             <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" step={0.04}>
-              {kpis.map((k) => (
+              {topKpis.map((k, i) => (
                 <StaggerItem key={k.id}>
-                  <KpiPreviewCard kpi={k} />
+                  <KpiPreviewCard kpi={k} rank={i + 1} />
                 </StaggerItem>
               ))}
             </Stagger>
           )}
         </div>
+
+        {/* Other KPIs that also apply to this domain */}
+        {moreKpis.length > 0 ? (
+          <div className="mt-14">
+            <SectionHeading title={d.domain.moreKpis} />
+            <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" step={0.04}>
+              {moreKpis.map((k) => (
+                <StaggerItem key={k.id}>
+                  <KpiPreviewCard kpi={k} />
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        ) : null}
 
         {/* Glossary */}
         <div className="mt-14">

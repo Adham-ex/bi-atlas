@@ -407,6 +407,7 @@ CALCULATE (
 Lines OTIF :=
 CALCULATE (
     COUNTROWS ( 'OrderLine' ),
+    NOT ISBLANK ( 'OrderLine'[DeliveredDate] ),
     'OrderLine'[DeliveredDate] <= 'OrderLine'[DueDate],
     'OrderLine'[DeliveredQty] >= 'OrderLine'[OrderedQty]
 )
@@ -433,8 +434,8 @@ RETURN
             en: "'OrderLine' is at one row per item per order and carries DueDate, DeliveredDate, OrderedQty, and DeliveredQty.",
           },
           {
-            ar: "الأسطر غير المسلّمة يجب أن تبقى في الجدول بقيمة DeliveredDate فارغة حتى تُحتسب ضمن المقام. المقارنة مع BLANK تُقيَّم كـ FALSE فلا تدخل البسط، وهو السلوك المطلوب.",
-            en: "Undelivered lines must remain in the table with a blank DeliveredDate so they count in the denominator. Comparison against BLANK evaluates as FALSE so they stay out of the numerator, which is the desired behaviour.",
+            ar: "الأسطر غير المسلّمة يجب أن تبقى في الجدول بقيمة DeliveredDate فارغة حتى تُحتسب ضمن المقام. انتبه: في DAX يُعامَل التاريخ الفارغ كأصغر من أي تاريخ، فيكون الشرط DeliveredDate <= DueDate صحيحًا له. لذلك يستبعد الشرط الصريح NOT ISBLANK هذه الأسطر من البسط.",
+            en: "Undelivered lines must remain in the table with a blank DeliveredDate so they count in the denominator. Beware: DAX treats a blank date as earlier than any date, so DeliveredDate <= DueDate is TRUE for it. The explicit NOT ISBLANK condition is what keeps those lines out of the numerator.",
           },
           {
             ar: "لا يوجد سماح بالتأخر هنا. إن كان العقد يسمح بيوم تأخير فعدّل الشرط إلى DeliveredDate <= DueDate + 1.",
