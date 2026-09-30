@@ -44,9 +44,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // Arabic-first: the server renders ar/rtl, and the bootstrap script below
-    // corrects <html> from stored preferences before first paint.
-    <html lang="ar" dir="rtl" data-theme="dark" suppressHydrationWarning>
+    // English/light by default: the server renders en/ltr, and the bootstrap
+    // script below corrects <html> from stored preferences before first paint.
+    <html lang="en" dir="ltr" data-theme="light" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: settingsBootstrapScript }} />
       </head>
@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             href="#main"
             className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:start-3 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:shadow-lg"
           >
-            تخطَّ إلى المحتوى
+            Skip to content
           </a>
           <div className="flex min-h-dvh flex-col">
             <Header />

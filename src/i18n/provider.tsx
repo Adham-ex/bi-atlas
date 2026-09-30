@@ -37,7 +37,7 @@ const SettingsContext = createContext<AppSettings | null>(null);
 /**
  * Reads stored preferences and applies them to <html> before paint.
  * Kept as a string so it can run as a blocking inline script in <head>;
- * without it the page would flash the default dark/Arabic pair.
+ * without it the page would flash the default light/English pair.
  */
 export const settingsBootstrapScript = `
 (function () {
@@ -71,16 +71,16 @@ function subscribe(onChange: () => void): () => void {
 }
 
 function getLocaleSnapshot(): Locale {
-  return document.documentElement.lang === "en" ? "en" : "ar";
+  return document.documentElement.lang === "ar" ? "ar" : "en";
 }
 
 function getThemeSnapshot(): Theme {
-  return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+  return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
 }
 
 // Must match what the server rendered in `layout.tsx`.
-const serverLocale = (): Locale => "ar";
-const serverTheme = (): Theme => "dark";
+const serverLocale = (): Locale => "en";
+const serverTheme = (): Theme => "light";
 const subscribeNever = () => () => {};
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
